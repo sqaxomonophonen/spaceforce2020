@@ -1,0 +1,23 @@
+#OPT=-g -O0
+OPT=-O2
+CFLAGS=$(OPT) \
+	-DDEBUG \
+	--std=c99 \
+	-Wall \
+	$(PLATFORM_CFLAGS)
+
+objs=main.o vxl.o stb_sprintf.o
+
+all: main
+
+vxl.o: vxl.c vxl.h common.h
+main.o: main.c vxl.h common.h
+
+main: $(objs)
+	$(CC) \
+		$^ -o $@ \
+		-lm \
+		$(PLATFORM_LINK)
+
+clean:
+	rm -f main *.o

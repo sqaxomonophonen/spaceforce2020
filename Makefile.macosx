@@ -1,0 +1,14 @@
+ENABLE=-DBUILD_MACOSX -DGFX_GL2
+PLATFORM_CFLAGS=\
+	-I/Library/Frameworks/SDL2.framework/Headers/ \
+	$(ENABLE)
+
+PLATFORM_LINK=\
+	-F/Library/Frameworks \
+	-framework CoreFoundation \
+	-framework CoreAudio \
+	-framework AudioUnit \
+	-framework OpenGL \
+	-framework SDL2
+
+include Makefile.common
